@@ -152,8 +152,7 @@ const PROVIDER_TEMPLATES: Record<string, ProviderTemplate> = {
 				name: `GitHub Copilot #${index}`,
 				async login(callbacks: OAuthLoginCallbacks): Promise<OAuthCredentials> {
 					return loginGitHubCopilot({
-						onAuth: (url: string, instructions?: string) =>
-							callbacks.onAuth({ url, instructions }),
+						onDeviceCode: callbacks.onDeviceCode,
 						onPrompt: callbacks.onPrompt,
 						onProgress: callbacks.onProgress,
 						signal: callbacks.signal,
